@@ -23,4 +23,23 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findAll();
 	}
 
+	public User getById(Integer id) {
+		return userMapper.selectByPrimaryKey(id);
+	}
+
+	@Transactional(readOnly = false)
+	public void save(User user) {
+		userMapper.insert(user);
+	}
+
+	@Transactional(readOnly = false)
+	public void update(User user) {
+		userMapper.updateByPrimaryKey(user);
+	}
+
+	@Transactional(readOnly = false)
+	public void delete(Integer id) {
+		userMapper.deleteByPrimaryKey(id);
+	}
+
 }

@@ -8,4 +8,12 @@ public interface UserService {
 
 	public List<User> findAll();
 	
+	public User getById(Integer id);
+
+	public void save(User user);
+
+	public void update(User user);
+
+	public void delete(Integer id);
+	
 }

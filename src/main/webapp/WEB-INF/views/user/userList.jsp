@@ -8,7 +8,7 @@
 <title>user</title>
 </head>
 <body>
-	<a href="saveUI">添加</a>
+	<a href="form">添加</a>
 	<table border="1">
 		<tr>
 			<th>ID</th>
@@ -19,7 +19,9 @@
 			<tr>
 				<td><c:out value="${user.id}"></c:out></td>
 				<td><c:out value="${user.name}"></c:out></td>
-				<td><a href="saveUI?id=${user.id}">编辑</a> <a>删除</a></td>
+				<td><a href="form?id=${user.id}">编辑</a> 
+					<a href="delete?id=${user.id}">删除</a>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

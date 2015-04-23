@@ -7,7 +7,7 @@
 <title>${empty user.id ? '添加':'编辑'}用户</title>
 </head>
 <body>
-<form action="${empty user.id ? 'save':'update'}">
+<form method="post" action="${empty user.id ? 'save':'update'}">
 	<input type="hidden" name="id" value="${user.id}"/>
 	用户名：<input name="name" id="name" value="${user.name}"/>
 	<input type="submit" value="保存"/>
