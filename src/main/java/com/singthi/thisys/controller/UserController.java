@@ -56,4 +56,9 @@ public class UserController {
 		userService.delete(user.getId());
 		return "redirect:list";
 	}
+	
+	@RequestMapping(value = "testExtJs")
+	public String testExtJs() {
+		return "user/testExtjs";
+	}
 }
