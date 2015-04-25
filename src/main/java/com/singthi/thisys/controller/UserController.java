@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.singthi.thisys.model.User;
@@ -27,6 +28,14 @@ public class UserController {
 		model.addAttribute("userList", userList);
 		
 		return "user/userList";
+	}
+	
+	@RequestMapping(value = "listJson")
+	@ResponseBody
+	public List<User> listJson(User user,HttpServletRequest request,HttpServletResponse response,Model model) {
+		List<User> userList =  userService.findAll();
+		
+		return userList;
 	}
 	
 	@RequestMapping(value = "form")
@@ -59,6 +68,12 @@ public class UserController {
 	
 	@RequestMapping(value = "testExtJs")
 	public String testExtJs() {
-		return "user/testExtjs";
+		return "user/extUserList";
 	}
+	
+	@RequestMapping(value = "index")
+	public String toIndex() {
+		return "user/index";
+	}
+	
 }
