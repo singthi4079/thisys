@@ -1,6 +1,8 @@
 package com.singthi.thisys.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -54,10 +57,35 @@ public class UserController {
 		return "redirect:list";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "saveJson")
+	public Map<String,Object> saveJson(User user, Model model, RedirectAttributes redirectAttributes) {
+		userService.save(user);
+		
+		Map<String,Object> result = new HashMap<String, Object>();
+		result.put("success", "success");
+		result.put("user", user);
+		
+		return result;
+	}
+	
+	
 	@RequestMapping(value = "update")
 	public String update(User user, Model model, RedirectAttributes redirectAttributes) {
 		userService.update(user);
 		return "redirect:list";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "updateJson")
+	public Map<String,Object> updateJson(User user, Model model, RedirectAttributes redirectAttributes) {
+		userService.update(user);
+		
+		Map<String,Object> result = new HashMap<String, Object>();
+		result.put("success", "success");
+		result.put("user", user);
+		
+		return result;
 	}
 	
 	@RequestMapping(value = "delete")

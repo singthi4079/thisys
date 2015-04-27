@@ -1,3 +1,5 @@
+var selectModel = Ext.create("Ext.selection.CheckboxModel");
+
 Ext.define("userManager.view.UserList",{
 	extend : "Ext.grid.Panel",
 	alias : "widget.userList",
@@ -5,6 +7,13 @@ Ext.define("userManager.view.UserList",{
 	title : "All Users",
 	
 	store : "Users",
+	
+	selModel : selectModel,
+	
+	tbar : [{
+		text: "添加",
+		action : "add"
+	}],
 	
 	initComponent : function() {
 		/*this .store = {
@@ -31,3 +40,4 @@ Ext.define("userManager.view.UserList",{
 		this.callParent(arguments);
 	}
 });
+
