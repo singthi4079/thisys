@@ -94,6 +94,19 @@ public class UserController {
 		return "redirect:list";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "deleteJson")
+	public Map<String,Object> deleteJson(String []ids, RedirectAttributes redirectAttributes) {
+		for(String id : ids) {
+			userService.delete(Integer.valueOf(id));
+		}
+		
+		Map<String,Object> result = new HashMap<String, Object>();
+		result.put("success", "success");
+		
+		return result;
+	}
+	
 	@RequestMapping(value = "testExtJs")
 	public String testExtJs() {
 		return "user/extUserList";

@@ -10,6 +10,7 @@ Ext.define("userManager.controller.UserController",{
 	
 	models : ["User"],
 	
+	
 	views :["UserList","UserEdit"],
 	
 	init :function() {
@@ -27,7 +28,10 @@ Ext.define("userManager.controller.UserController",{
 			},
 			"userList button[action=add]" : {
 				click : this.editUser
-			}
+			},
+			"userList button[action=delete]" : {
+				click : this.deleteUsers
+			},
 		});
 	},
 	
@@ -42,7 +46,7 @@ Ext.define("userManager.controller.UserController",{
 	}*/
 	
 	
-	editUser : function(grid,record,values) {
+	editUser : function(grid,record) {
 		var view = Ext.widget("userEdit");
 		//Ext.Msg.alert("提示",Ext.isEmpty(record.id));
 		
@@ -74,6 +78,8 @@ Ext.define("userManager.controller.UserController",{
 		}
 		//console.log(this.down("window"));
 		
+		var theContrl = this;
+		
 		if(form.form.isValid()) {
 			form.form.submit({
 				//clientValidation:true,//进行客户端验证
@@ -85,27 +91,65 @@ Ext.define("userManager.controller.UserController",{
 					win.close();
 					//updateBookGrid(action.result.bookId);
 					Ext.Msg.alert("提示",alertMsg + "成功");
+					theContrl.relaodData(theContrl);
 				},
 				failure:function(form,action){//加载失败的处理函数
 					Ext.Msg.alert("提示",alertMsg + "失败");
 				}
 			});
+			/*
 			this.getUsersStore().sync();
+			//要调用reload之后显示更新后的数据，必须调用commit才会显示出来
+			this.getUsersStore().commitChanges();
 			this.getUsersStore().reload();
+			*/
 		}
 		//win.close();
+	},
+	
+	deleteUsers : function(button) {
+		var selecteds = button.up("grid").getSelectionModel().getSelection();;
+		var ids = [];
+		
+		if(selecteds.length > 0) {
+			for(var i=0; i<selecteds.length; i++) {
+				ids.push(selecteds[i].data.id);
+			}
+		} else if(selecteds.length == 0){
+			Ext.Msg.alert("提示","请选择要进行操作的用户");
+		}
+		//console.log(selecteds[0].data.id);
+		var msgTip = Ext.MessageBox.show({
+			title:'提示',
+			width : 250,
+			msg:'正在删除书籍信息请稍后......'
+		});
+		
+		var theContrl = this;
+		
+		Ext.Ajax.request({
+			url : "deleteJson",
+			params : {"ids" : ids},
+			method : 'POST',
+			success : function(response,options){
+				theContrl.relaodData(theContrl);
+				msgTip.hide();
+				//服务器端数据成功删除后，同步删除客户端列表中的数据
+				Ext.Msg.alert('提示','删除书籍信息成功。');
+			},
+			failure : function(response,options){
+				msgTip.hide();
+				Ext.Msg.alert('提示','删除书籍信息请求失败！');
+			}
+		});
+		
+	},
+	
+	relaodData : function(contrl) {
+		contrl.getUsersStore().sync();
+		//要调用reload之后显示更新后的数据，必须调用commit才会显示出来
+		contrl.getUsersStore().commitChanges();
+		contrl.getUsersStore().reload();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 });

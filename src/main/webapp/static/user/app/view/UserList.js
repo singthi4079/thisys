@@ -13,6 +13,9 @@ Ext.define("userManager.view.UserList",{
 	tbar : [{
 		text: "添加",
 		action : "add"
+	},{
+		text : "删除",
+		action : "delete"
 	}],
 	
 	initComponent : function() {
