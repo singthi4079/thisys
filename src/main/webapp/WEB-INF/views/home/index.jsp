@@ -5,10 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" type="text/css" href="static/extjs/resources/css/ext-all.css"/>
-<script type="text/javascript" src="static/extjs/ext-all.js"></script>
-<script type="text/javascript" src="static/extjs/locale/ext-lang-zh_CN.js"></script>
-<script type="text/javascript" src="static/util/layout.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/extjs/resources/css/ext-all.css"/>
+<script type="text/javascript" src="../static/extjs/ext-all.js"></script>
+<script type="text/javascript" src="../static/extjs/locale/ext-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../static/util/gload.js"></script>
+<script type="text/javascript" src="../static/util/layout.js"></script>
 
 <title>my oa sys</title>
 </head>

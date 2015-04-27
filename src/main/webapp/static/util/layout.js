@@ -1,4 +1,5 @@
 Ext.onReady(function() {
+	 requires: ["thisys.util.Gload"];
     //The new TabPanel
 	var tab = Ext.create('Ext.TabPanel', {
 		region : 'center',
@@ -7,7 +8,11 @@ Ext.onReady(function() {
 		resizeTabs : true, // turn on tab resizing
 		minTabWidth : 115,
 		tabWidth : 135,
-		enableTabScroll : true
+		enableTabScroll : true,
+		items : [{//创建一个默认的tab
+			title : "首页",
+			html : "<h2>欢迎使用本系统</h2>"
+		}]
 	});
 	var viewPort = Ext.create('Ext.Viewport', {
 		layout : "border",
@@ -43,7 +48,7 @@ Ext.onReady(function() {
                             id:'root',
                             children : [{
                                 text : '用户列表',
-                                id : 'user/index',
+                                id : thisys.util.Gload.WEBCONTENT +'/user/index',
                                 leaf : true
                             }, {
                                 text : '修改密码',

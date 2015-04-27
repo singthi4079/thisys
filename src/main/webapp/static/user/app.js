@@ -12,8 +12,8 @@ Ext.application({
             items: [
                 {
                     xtype: "userList",
-                    title: "Users",
-                    html : "List of users will go here"
+                    //title: "Users",
+                    //html : "List of users will go here"
                 }
             ]
         });

@@ -15,11 +15,6 @@ Ext.define("userManager.controller.UserController",{
 	
 	init :function() {
 		this.control({
-		/*
-			"viewport > panel" : {
-				render : this.onPanelRendered
-			}
-		*/
 			"userList" : {
 				itemdblclick : this.editUser
 			},
