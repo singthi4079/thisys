@@ -91,6 +91,8 @@ Ext.define("userManager.controller.UserController",{
 				}
 			});
 			this.getUsersStore().sync();
+			//要调用reload之后显示更新后的数据，必须调用commit才会显示出来
+			this.getUsersStore().commit();
 			this.getUsersStore().reload();
 		}
 		//win.close();
