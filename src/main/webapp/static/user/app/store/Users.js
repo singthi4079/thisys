@@ -15,13 +15,13 @@ Ext.define("userManager.store.Users", {
 
 	/*server data*/
 	autoLoad : true,
-
+	/*data in static file
 	proxy : {
 		type : "ajax",
 		//url : "data/users.json",
 		api : {
-			read : "data/users.json",
-			update : "data/updateUsers.json"
+			read : thisys.util.Gload.WEBCONTENTSTATIC +"/user/data/users.json",
+			update : thisys.util.Gload.WEBCONTENTSTATIC +"/user/data/updateUsers.json"
 		},
 		reader : {
 			type : "json",
@@ -29,7 +29,21 @@ Ext.define("userManager.store.Users", {
 			successProperty : "success"
 		}
 	}
-
+	*/
+	
+	
+	proxy : {
+		type : "ajax",
+		url : "listJson",
+		reader : {
+			type : "json",
+			root : "users",
+			successProperty : "success",
+			idProperty : "id",
+			//record : "User",
+			totalRecords : "results"
+		}
+	}
 });
 
 /*

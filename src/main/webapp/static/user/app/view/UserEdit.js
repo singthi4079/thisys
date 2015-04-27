@@ -11,12 +11,12 @@ Ext.define("userManager.view.UserEdit",{
 			xtype : "form",
 			items :[{
 				xtype : "textfield",
-				name : "name",
-				fieldLabel : "Name"
+				name : "id",
+				fieldLabel : "ID"
 			},{
 				xtype : "textfield",
-				name : "email",
-				fieldLabel : "Email"
+				name : "name",
+				fieldLabel : "Name"
 			}]
 		}];
 		

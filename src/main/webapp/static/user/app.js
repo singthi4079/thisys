@@ -1,8 +1,8 @@
 Ext.application({
-    requires: ["Ext.container.Viewport"],
+    requires: ["Ext.container.Viewport","thisys.util.Gload"],
     name: "userManager",
 
-    appFolder: "app",
+    appFolder: thisys.util.Gload.WEBCONTENTSTATIC + "/user/app",
 
     controllers : ["UserController"],
     

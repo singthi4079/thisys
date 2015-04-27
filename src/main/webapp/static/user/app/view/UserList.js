@@ -19,12 +19,12 @@ Ext.define("userManager.view.UserList",{
 		};
 		*/
 		this.columns = [{
-			header : "Name",
-			dataIndex : "name",
+			header : "ID",
+			dataIndex : "id",
 			flex : 1
 		},{
-			header : "Email",
-			dataIndex : "email",
+			header : "Name",
+			dataIndex : "name",
 			flex : 1
 		}];
 		

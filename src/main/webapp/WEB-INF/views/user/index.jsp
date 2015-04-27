@@ -7,7 +7,8 @@
 <link rel="stylesheet" type="text/css" href="../static/extjs/resources/css/ext-all.css"/>
 <script type="text/javascript" src="../static/extjs/ext-all.js"></script>
 <script type="text/javascript" src="../static/extjs/locale/ext-lang-zh_CN.js"></script>
-<script type="text/javascript" src="../user/app.js"></script>
+<script type="text/javascript" src="../static/util/gload.js"></script>
+<script type="text/javascript" src="../static/user/app.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>User Manager</title>
